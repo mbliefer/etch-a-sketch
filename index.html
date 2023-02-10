@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
+    <div class="top">
+        <h1 class="title">Etch-a-Sketch</h1>
+        <p>Pixels</p>
+        <div class="slide-container">
+            <input type="range" min="16" max="64" value="16" class="slider">
+        </div>
+    </div>
     <script src="script.js"></script>
+    <div class="buttons">
+        <button class="black">BLACK</button>
+        <button class="rainbow">RAINBOW</button>
+    </div>
+    <div class="grid"></div>
 </body>
+
 </html>
