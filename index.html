@@ -14,19 +14,21 @@
 </head>
 
 <body>
-    <div class="top">
-        <h1 class="title">Etch-a-Sketch</h1>
-        <p>Pixels</p>
-        <div class="slide-container">
-            <input type="range" min="16" max="64" value="16" class="slider">
+    <div class="page">
+        <div class="center">
+            <h1 class="title">Etch-a-Sketch</h1>
+            <p class="pixels">16 x 16</p>
+            <input type="range" min="16" max="64" value="16" class="slider" id="range">
+            <div class="grid"></div>
+        </div>
+        <div class="buttons">
+            <button class="black btn">BLACK</button>
+            <button class="random btn">RANDOM</button>
+            <button class="eraser btn" >ERASER</button>
         </div>
     </div>
     <script src="script.js"></script>
-    <div class="buttons">
-        <button class="black">BLACK</button>
-        <button class="rainbow">RAINBOW</button>
-    </div>
-    <div class="grid"></div>
+
 </body>
 
 </html>
