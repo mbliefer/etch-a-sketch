@@ -14,6 +14,8 @@ body {
     width: 500px;
     height: 500px;
     border: 5px solid black;
+    border-radius: 4%;
+    padding: 5px;
     background-color: #c4b3b3;
     margin-top: 10px;
     display: flex;
@@ -21,6 +23,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
+    box-shadow: 16px 16px 16px 16px rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .center {
@@ -63,7 +66,7 @@ body {
     cursor: pointer;
 }
 
-.btn {
+button {
     width: 150px;
     border-radius: 8px;
     border: none;
@@ -75,24 +78,22 @@ body {
 
 }
 
-.btn:hover {
+button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     transform: scale(1.05);
 }
 
-.black {
+#black {
     background-color: black;
     color: white;
 }
 
-.random {
+#random {
     background-image: linear-gradient(90deg, blue, red, white, #adbc23, purple, rgb(255, 0, 255));
 }
 
 .squares {
-    border: solid 2px black;
-    width: 16px;
-    height: 16px;
+    
 
 }
 

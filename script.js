@@ -1,45 +1,78 @@
 const slider = document.querySelector('.slider');
 const pixels = document.querySelector('.pixels');
 const grid = document.querySelector('.grid');
+const erase = document.querySelector('#erase')
+let btns = document.querySelectorAll('.btn');
 let gridWidth = parseFloat(getComputedStyle(grid).width);
-console.log(gridWidth / 2);
 let side;
-let squares = document.createElement('div');
-
 let squareSize;
+let currentColor = 'black';
 
+window.addEventListener('load', () => {
+    squareSize = gridWidth / 16;
+    gridSquares();
+    return pixels.textContent = `${slider.value} x ${slider.value}`;
+});
 
-//create square grid after moving slide
-slider.addEventListener('change', gridSquares); 
-//display grid layout (ie. 16 x 16)
-slider.addEventListener('change', () => pixels.textContent = `${slider.value} x ${slider.value}`);
+const eraseGrid = () => gridSquares();
+erase.addEventListener('click', eraseGrid);
 
-slider.addEventListener('change', setSquareSize);
-//change p output after moving slider
+const randomNumber = (max) => Math.floor(Math.random() * (max + 1));
+const colorBlack = (e) => e.target.style.backgroundColor = "black";
+
+function colorRandom(e) {
+    let r = randomNumber(255);
+    let g = randomNumber(255);
+    let b = randomNumber(255);
+    e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+
+//1. listen for slider change
+//2. set the size of each square 
+//3. setup grid according to size of squares
+//4. display grid layout above slider (ie. 16 x 16)
+slider.addEventListener('change', (e) => {
+    setSquareSize(e);
+    gridSquares();
+    return pixels.textContent = `${slider.value} x ${slider.value}`;
+});
+
+btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        //btn.style.transform = 'scale(1.1)';
+        currentColor = btn.id;
+    });
+});
 
 function setSquareSize(e) {
     side = e.target.value;
     squareSize = gridWidth / side;
-    console.log(squareSize)
-    console.log(gridWidth);
-    console.log(side);
     return squareSize;
-
 }
 
-
-function gridSquares(e) {
+function gridSquares() {
     grid.innerHTML = '';
-    setSquareSize(e);
     for (let i = 0; i < slider.value; i++) {
         for (let j = 0; j < slider.value; j++) {
-            squares = document.createElement('div');
+            let squares = document.createElement('div');
             squares.classList.add('squares');
             squares.style.width = squareSize + "px";
             squares.style.height = squareSize + "px";
-            squares.textContent = `${i + 1}`;
+            //squares.textContent = `${i + 1}`;
             squares.style.border = "none";
             grid.appendChild(squares);
+            //squares.addEventListener('mousedown', startDrawing);
+            squares.addEventListener('mouseover', (e) => {
+                if (e.buttons == 1) startDrawing(e);
+            });
         }
+    }
+}
+
+function startDrawing(e) {
+    if (currentColor == 'black') {
+        colorBlack(e);
+    } else {
+        colorRandom(e);
     }
 }
