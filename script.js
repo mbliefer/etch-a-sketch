@@ -2,7 +2,9 @@ const slider = document.querySelector('.slider');
 const pixels = document.querySelector('.pixels');
 const grid = document.querySelector('.grid');
 const erase = document.querySelector('#erase')
-let btns = document.querySelectorAll('.btn');
+const black = document.querySelector('.black');
+const random = document.querySelector('.random');
+const btns = document.querySelectorAll('.btn');
 let gridWidth = parseFloat(getComputedStyle(grid).width);
 let side;
 let squareSize;
@@ -37,12 +39,19 @@ slider.addEventListener('change', (e) => {
     return pixels.textContent = `${slider.value} x ${slider.value}`;
 });
 
+function transformButtons(e) {
+    this.style.transform = 'scale(1.1)';
+    currentColor = this.id;
+    if (currentColor !== 'black') {
+        black.style.transform = null;
+    }
+    if (currentColor !== 'random') {
+        random.style.transform = null;
+    }
+}
+
 btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        //btn.style.transform = 'scale(1.1)';
-        currentColor = btn.id;
-    });
-});
+    btn.addEventListener('click', transformButtons)});
 
 function setSquareSize(e) {
     side = e.target.value;
@@ -58,7 +67,6 @@ function gridSquares() {
             squares.classList.add('squares');
             squares.style.width = squareSize + "px";
             squares.style.height = squareSize + "px";
-            //squares.textContent = `${i + 1}`;
             squares.style.border = "none";
             grid.appendChild(squares);
             //squares.addEventListener('mousedown', startDrawing);
