@@ -79,7 +79,6 @@ button {
     font-weight: 900;
     font-size: 16px;
     font-family: 'DotGothic16', sans-serif;
-
 }
 
 button:hover {
@@ -96,9 +95,5 @@ button:hover {
     background-image: linear-gradient(90deg, blue, red, white, #adbc23, purple, rgb(255, 0, 255));
 }
 
-.squares {
-    
-
-}
 
 

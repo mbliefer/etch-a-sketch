@@ -12,6 +12,7 @@ let currentColor = 'black';
 
 window.addEventListener('load', () => {
     squareSize = gridWidth / 16;
+    black.style.transform = 'scale(1.1)';
     gridSquares();
     return pixels.textContent = `${slider.value} x ${slider.value}`;
 });
@@ -51,7 +52,8 @@ function transformButtons(e) {
 }
 
 btns.forEach((btn) => {
-    btn.addEventListener('click', transformButtons)});
+    btn.addEventListener('click', transformButtons)
+});
 
 function setSquareSize(e) {
     side = e.target.value;
@@ -59,25 +61,32 @@ function setSquareSize(e) {
     return squareSize;
 }
 
+// let mouseDown = false
+// document.body.onmousedown = () => (mouseDown = true)
+// document.body.onmouseup = () => (mouseDown = false)
+
 function gridSquares() {
     grid.innerHTML = '';
     for (let i = 0; i < slider.value; i++) {
         for (let j = 0; j < slider.value; j++) {
             let squares = document.createElement('div');
-            squares.classList.add('squares');
+            squares.classList.add('squaress');
             squares.style.width = squareSize + "px";
             squares.style.height = squareSize + "px";
             squares.style.border = "none";
             grid.appendChild(squares);
-            //squares.addEventListener('mousedown', startDrawing);
+            // squares.addEventListener('mouseover', startDrawing);
             squares.addEventListener('mouseover', (e) => {
                 if (e.buttons == 1) startDrawing(e);
             });
+            // squares.addEventListener('mouseover', startDrawing);
+            // squares.addEventListener('mousedown', startDrawing);
         }
     }
 }
 
 function startDrawing(e) {
+    // if (e.type === 'mouseover' && !mouseDown) return
     if (currentColor == 'black') {
         colorBlack(e);
     } else {
